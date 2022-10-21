@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { NextPage } from "next";
+import dynamic from "next/dynamic";
 
 import { useRouter } from "next/router";
 
@@ -7,11 +8,15 @@ import { NavArrowRight, VideoCamera } from "iconoir-react";
 
 import { useNhostClient, useAuthenticated } from "@nhost/nextjs";
 
+const ModalVideo = dynamic(() => import("@/components/ModalVideo"), {
+  ssr: false,
+});
+
 const Home: NextPage = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [highlight, setHighlight] = useState<boolean>(false);
+
   const nhost = useNhostClient();
-
-  const [highlight, setHighlight] = useState(false);
-
   const isAuthenticated = useAuthenticated();
 
   const router = useRouter();
@@ -57,7 +62,10 @@ const Home: NextPage = () => {
             <span className="mr-2">Start learning</span>
             <NavArrowRight strokeWidth="2" />
           </button>
-          <button className="flex items-center border border-transparent px-4 py-3 rounded-md text-white text-lg font-semibold hover:bg-[#fff] hover:text-[#000] transition-all duration-200">
+          <button
+            className="flex items-center border border-transparent px-4 py-3 rounded-md text-white text-lg font-semibold hover:bg-[#fff] hover:text-[#000] transition-all duration-200"
+            onClick={() => setIsOpen(true)}
+          >
             <span className="mr-2">Watch demo</span>
             <VideoCamera strokeWidth="2" />
           </button>
@@ -75,6 +83,14 @@ const Home: NextPage = () => {
           </a>
         </p>
       </div>
+      <ModalVideo
+        //@ts-ignore
+        channel="youtube"
+        autoplay
+        isOpen={isOpen}
+        videoId="CLeZyIID9Bo"
+        onClose={() => setIsOpen(false)}
+      />
     </div>
   );
 };
