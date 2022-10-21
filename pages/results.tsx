@@ -33,7 +33,7 @@ const Videos: NextPage<SearchType> = ({ data }) => {
         return (
           <div
             key={index}
-            className="flex sm:flex-col items-center sm:items-start mb-10 p-6 sm:p-0 border rounded-md bg-[#202020] border-transparent cursor-pointer border-[#313131] hover:border-[rgba(255,255,255,0.5)]"
+            className="flex sm:flex-col items-center sm:items-start mb-10 p-6 sm:p-4 border rounded-md bg-[#202020] border-transparent cursor-pointer border-[#313131] hover:border-[rgba(255,255,255,0.5)]"
             onClick={() => {
               handleRoute(
                 video.id.kind,
@@ -44,14 +44,14 @@ const Videos: NextPage<SearchType> = ({ data }) => {
             <div
               className={`shrink-0 w-[320px] sm:w-full h-[200px] relative ${
                 video.id.kind === "youtube#channel"
-                  ? "w-[180px] !h-[180px] rounded-full sm:rounded-none overflow-hidden"
+                  ? "!w-[180px] !h-[180px] rounded-full overflow-hidden"
                   : ""
               }`}
             >
               <Image
                 src={video.snippet.thumbnails.medium.url}
                 alt="thumbnail"
-                className="rounded-sm sm:rounded-none sm:w-full sm:mb-4"
+                className="rounded-sm sm:w-full sm:mb-4"
                 layout="fill"
               />
             </div>
