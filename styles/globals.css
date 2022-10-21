@@ -1,26 +1,113 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@layer base {
+  html,
+  body,
+  #__next {
+    height: 100%;
   }
+
   body {
-    color: white;
-    background: black;
+    font-family: "InterVariable", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+    background-color: #121b2e;
+    background: #181818;
+    line-height: 1.6;
+    color: #fff;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
+}
+
+.editor > div:nth-child(2) {
+  background-color: #202020;
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  border-width: 1px;
+  border-color: #313131;
+  border-radius: 6px;
+}
+
+.prose {
+  max-width: 100%;
+}
+
+/*Custom scrollbar*/
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #202020;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #313131;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  -webkit-background-clip: content-box;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #c4c2c1;
+}
+
+/*ProseMirror*/
+.ProseMirror > * {
+  color: #fff !important;
+}
+
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3,
+.ProseMirror h4,
+.ProseMirror h5,
+.ProseMirror h6 {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.ProseMirror .is-empty::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #ced4da;
+  opacity: 0.5;
+  pointer-events: none;
+  height: 0;
+}
+
+.player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.editor-select {
+  background: url("/chevron-down.svg") no-repeat right #202020;
+  background-position-x: calc(100% - 15px);
+}
+
+#nprogress .bar {
+  background: #cc0000 !important;
+}
+#nprogress .peg {
+  box-shadow: 0 0 10px #cc0000, 0 0 5px #cc0000;
 }
