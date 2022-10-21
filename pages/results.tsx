@@ -56,15 +56,15 @@ const Videos: NextPage<SearchType> = ({ data }) => {
               />
             </div>
 
-            <div className="ml-5 sm:ml-0 p-4">
-              <p className="mb-4 text-lg ">{decode(video.snippet.title)}</p>
+            <div className="ml-5 sm:ml-0 py-4">
+              <p className="mb-4 text-xl">{decode(video.snippet.title)}</p>
 
               {video.id.kind === "youtube#channel" ? (
-                <p className="opacity-50">
+                <p className="opacity-50 text-lg">
                   {decode(video.snippet.description)}
                 </p>
               ) : (
-                <p className="opacity-50">
+                <p className="opacity-50 text-lg">
                   {decode(video.snippet.channelTitle)}
                 </p>
               )}

@@ -35,18 +35,18 @@ const Watch = () => {
     fetchPolicy: "network-only",
   });
 
-  console.log({ data });
+  // console.log({ data });
 
   const { data: ytMetaData, error: ytMetaDataError } = useSWR<YTMetaData>(
     `/api/ytmetadata?v=${videoId}`,
     fetcher
   );
 
-  console.log({ ytMetaData });
+  // console.log({ ytMetaData });
 
   const findNote = data?.notes?.find((note: any) => note.video_id === videoId);
 
-  console.log({ findNote });
+  // console.log({ findNote });
 
   if (error || ytMetaDataError) {
     return <div>Something went wrong</div>;

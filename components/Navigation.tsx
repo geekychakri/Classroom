@@ -145,7 +145,15 @@ const Navigation = () => {
           </button>
         </div>
       ) : (
-        <DropDown />
+        <div className="flex items-center">
+          <Link href="/notes">
+            <a className="flex items-center text-base font-normal mr-4 border border-[#313131] rounded-md px-4 py-2 hover:bg-[#fff] hover:text-[#000] duration-300">
+              <Notes className="mr-2" />
+              <span>My notes</span>
+            </a>
+          </Link>
+          <DropDown />
+        </div>
       )}
     </nav>
   );

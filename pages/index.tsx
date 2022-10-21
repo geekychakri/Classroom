@@ -54,7 +54,7 @@ const Home: NextPage = () => {
         </h1>
         <div className="flex sm:flex-col mb-8">
           <button
-            className="flex items-center bg-[#cc0000] border border-transparent px-4 py-3 rounded-md text-white text-lg font-semibold mr-6 sm:mr-0 sm:mb-6 hover:bg-[#fff] hover:text-[#000] transition-all duration-200"
+            className="flex items-center bg-[#cc0000] border border-transparent px-4 py-3 rounded-md text-white text-lg font-semibold mr-6 sm:mr-0 sm:mb-6 hover:bg-[#fff] hover:text-[#000] transition-all duration-200 sm:justify-center"
             onClick={handleSignIn}
             onMouseEnter={() => setHighlight(true)}
             onMouseLeave={() => setHighlight(false)}
@@ -63,7 +63,7 @@ const Home: NextPage = () => {
             <NavArrowRight strokeWidth="2" />
           </button>
           <button
-            className="flex items-center border border-transparent px-4 py-3 rounded-md text-white text-lg font-semibold hover:bg-[#fff] hover:text-[#000] transition-all duration-200"
+            className="flex items-center border border-transparent px-4 py-3 rounded-md text-white text-lg font-semibold hover:bg-[#fff] hover:text-[#000] transition-all duration-200 sm:justify-center"
             onClick={() => setIsOpen(true)}
           >
             <span className="mr-2">Watch demo</span>

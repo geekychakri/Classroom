@@ -22,10 +22,10 @@ const Channel: NextPage<ChannelType> = ({ data }) => {
       <h1 className="text-5xl font-semibold mb-5 opacity-50">
         {data.items[0].snippet.channelTitle}
       </h1>
-      {data?.items?.map((video) => {
+      {data?.items?.map((video, index) => {
         return (
           <div
-            key={video.id.videoId}
+            key={index}
             className="flex sm:flex-col items-center sm:items-start mb-10 p-6 sm:p-0 border rounded-md bg-[#202020] border-transparent cursor-pointer border-[#313131] hover:border-[rgba(255,255,255,0.5)]"
             onClick={() => handleClick(video.id.videoId)}
           >
@@ -38,7 +38,7 @@ const Channel: NextPage<ChannelType> = ({ data }) => {
               />
             </div>
             <div className="ml-5 sm:ml-0 p-4">
-              <p className="mb-4 text-lg">{decode(video.snippet.title)}</p>
+              <p className="mb-4 text-xl">{decode(video.snippet.title)}</p>
               <p className="opacity-50">{decode(video.snippet.channelTitle)}</p>
             </div>
           </div>

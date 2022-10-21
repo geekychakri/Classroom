@@ -12,6 +12,9 @@ const ADD_NOTE = gql`
   mutation AddNote($note: notes_insert_input!) {
     insert_notes(objects: [$note]) {
       affected_rows
+      returning {
+        note_id
+      }
     }
   }
 `;
@@ -36,35 +39,57 @@ const TipTapNav = ({
 }: TipTapNavProps) => {
   const [showUpdateBtn, setShowUpdateBtn] = useState(false);
 
-  const [insertNote] = useMutation(ADD_NOTE, { errorPolicy: "none" });
-  const [updateNote] = useMutation(UPDATE_NOTE);
+  const [insertNote, { data: noteData }] = useMutation(ADD_NOTE, {
+    errorPolicy: "none",
+  });
+  const [updateNote] = useMutation(UPDATE_NOTE, { errorPolicy: "none" });
+
+  const noteId = noteData?.insert_notes?.returning?.[0]?.note_id;
 
   const handleSubmit = () => {
-    insertNote({
-      variables: {
-        note: {
-          note: DOMPurify.sanitize(`${notes}`),
-          video_id: videoId,
-          video_title: videoTitle,
-        },
-      },
-    })
-      .then(() => {
-        toast.success("Saved");
-        setShowUpdateBtn(true);
-      })
-      .catch((e) => toast.error("Something went wrong"));
+    try {
+      toast.promise(
+        insertNote({
+          variables: {
+            note: {
+              note: DOMPurify.sanitize(`${notes}`),
+              video_id: videoId,
+              video_title: videoTitle,
+            },
+          },
+        }),
+        {
+          loading: "Loading",
+          success: () => {
+            setShowUpdateBtn(true);
+            return "Saved";
+          },
+          error: "Something went wrong",
+        }
+      );
+    } catch (err) {
+      toast.error("Something went wrong");
+    }
   };
 
   const handleUpdate = () => {
-    updateNote({
-      variables: {
-        note: DOMPurify.sanitize(`${notes}`),
-        note_id: findNote.note_id,
-      },
-    })
-      .then(() => toast.success("Updated"))
-      .catch((e) => toast.error("Something went wrong"));
+    try {
+      toast.promise(
+        updateNote({
+          variables: {
+            note: DOMPurify.sanitize(`${notes}`),
+            note_id: noteId || findNote.note_id,
+          },
+        }),
+        {
+          loading: "Loading",
+          success: "Updated",
+          error: "Something went wrong",
+        }
+      );
+    } catch (err) {
+      toast.error("Something went wrong");
+    }
   };
 
   return (

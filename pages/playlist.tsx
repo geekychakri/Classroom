@@ -36,7 +36,7 @@ const Playlist: NextPage<PlaylistType> = ({ data }) => {
               />
             </div>
             <div className="ml-5 sm:ml-0 p-4">
-              <p className="mb-4 text-lg">{decode(video.snippet.title)}</p>
+              <p className="mb-4 text-xl">{decode(video.snippet.title)}</p>
               <p className="opacity-50">{decode(video.snippet.channelTitle)}</p>
             </div>
           </div>
