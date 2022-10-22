@@ -21,11 +21,15 @@ const Home: NextPage = () => {
 
   const router = useRouter();
 
+  const dev = process.env.NODE_ENV !== "production";
+
   const handleSignIn = () => {
     nhost.auth.signIn({
       provider: "github",
       options: {
-        redirectTo: "/explore",
+        redirectTo: dev
+          ? "/explore"
+          : "https://learnwithclassroom.vercel.app/explore",
       },
     });
   };
