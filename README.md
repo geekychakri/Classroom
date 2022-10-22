@@ -2,13 +2,13 @@
 
 # Classroom
 
-Learning with youtube made excited.
+Learning with youtube made exciting.
 
 ## Demo
 
 Here's a quick demo of the app.
 
-[Classroom - Learning with YouTube made excited](https://www.youtube.com/watch?v=uqX2yAVLC5A)
+[Classroom - Learning with YouTube made exciting](https://www.youtube.com/watch?v=uqX2yAVLC5A)
 
 
 ## Run Locally
