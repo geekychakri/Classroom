@@ -1,0 +1,22 @@
+{
+  "short_name": "Classroom",
+  "name": "Classroom",
+  "description": "Learning with youtube made excited",
+  "start_url": "/",
+  "background_color": "#181818",
+  "theme_color": "#181818",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon-256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    }
+  ]
+}

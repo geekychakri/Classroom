@@ -88,7 +88,7 @@ const Home: NextPage = () => {
         channel="youtube"
         autoplay
         isOpen={isOpen}
-        videoId="CLeZyIID9Bo"
+        videoId="uqX2yAVLC5A"
         onClose={() => setIsOpen(false)}
       />
     </div>

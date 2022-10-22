@@ -10,6 +10,7 @@ const options = [
   "CSS",
   "JavaScript",
   "Tapas Adhikary",
+  "Nhost",
   "ReactJS",
   "TED",
 ];

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import Router from "next/router";
@@ -54,12 +54,19 @@ function MyApp({
           property="og:description"
           content="Learning with youtube made excited"
         />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:image"
+          content="https://learnwithclassroom.vercel.app/cover.png"
+        />
         <meta name="twitter:title" content="Classroom" />
         <meta
           name="twitter:description"
           content="Learning with youtube made excited"
         />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="icon" href="/favicon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
         <title>Classroom</title>
       </Head>
       <NhostNextProvider nhost={nhost} initial={pageProps.nhostSession}>
